@@ -36,5 +36,25 @@ module.exports.addLatestNews = async (req, res) => {
 
 module.exports.updateLatestNews = async (req, res) => {
   try {
-  } catch (error) {}
+    const { author, title, news_desc, post_date } = req.body;
+
+    if (req.file) {
+      Object.assign(req.body, {
+        newsBanner: "/uploads/images/" + req.file.filename,
+      });
+    }
+
+    const latestNews = await LatestNews.findByIdAndUpdate(req.params.id, {
+      author: author,
+      title: title,
+      news_desc: news_desc,
+      newsBanner: req.body.newsBanner,
+      post_date: post_date,
+    });
+
+    res.status(200).send(latestNews);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal server error");
+  }
 };
