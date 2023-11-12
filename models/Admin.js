@@ -1,5 +1,4 @@
-// Import Mongoose
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Define the Admin schema
 const adminSchema = new mongoose.Schema({
@@ -21,20 +20,20 @@ const adminSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: 'admin', // You can modify this for different roles if needed
+    default: "admin", // You can modify this for different roles if needed
   },
   createdAt: {
     type: String,
-    default: 'N/A',
+    default: "N/A",
   },
   updateTime: {
     type: String,
-    default: 'N/A',
+    default: "N/A",
   },
 });
 
 // Create the Admin model
-const Admin = mongoose.model('Admin', adminSchema, 'Admin');
+const Admin = mongoose.model("Admin", adminSchema, "Admin");
 
 // Export the model
 module.exports = Admin;

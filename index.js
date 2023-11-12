@@ -47,6 +47,7 @@ app.use(
 );
 
 const adminRoutes = require("./routes/v1/admin.route");
+const latestNewsRoutes = require("./routes/v1/latestNews.route");
 
 const port = 5000;
 
@@ -56,6 +57,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/latest_news", latestNewsRoutes);
 
 app.listen(port, () => {
   console.log("listening on port " + port);
